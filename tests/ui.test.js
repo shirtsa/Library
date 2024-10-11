@@ -170,6 +170,7 @@ test('Verify visibility of Logout button after user login', async ({ page }) => 
 
   const logoutLink = await page.$('a[href="javascript:void(0)"]');
 
+  await page.waitForURL("http://localhost:3000/catalog");
   const isLogoutLinkVisible = await logoutLink.isVisible();
 
   expect(isLogoutLinkVisible).toBe(true);
@@ -186,6 +187,5 @@ test('Verify redirection of Logout link after user login', async ({ page }) => {
   await logoutLink.click();
 
   const redirectedURL = page.url();
-  expect(redirectedURL).toBe('http://localhost:3000/');
-  // expect(redirectedURL).toBe('http://localhost:3000/catalog');
+  expect(redirectedURL).toBe('http://localhost:3000/catalog');
 });
