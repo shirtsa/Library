@@ -19,3 +19,9 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm ci
+    - name: Start backend
+      run: npm run start:be &
+    - name: Start frontend
+      run: npm run start:fe &
+    - name: Execute the UI tests
+      run: npm run test:ui
